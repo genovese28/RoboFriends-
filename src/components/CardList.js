@@ -1,7 +1,8 @@
 import React from 'react';
-import Card from './Card';
+import Card from '../components/Card';
 
-const CardList = ({ robots }) => {//pure functions, dumb, deterministic,always the same
+const CardList = ({ robots }) => {
+  //pure functions, dumb, deterministic,always the same
   return (
     <div>
       {robots.map((user, i) => {
