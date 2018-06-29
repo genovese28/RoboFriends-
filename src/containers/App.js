@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll1';
 import ErrorBoundry from '../components/ErrorBoundry';
 //import { robots } from './robots';
 import './App.css';
-
+import { setSearchField } from '../actions';
 //state lives in the parent component
 
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchRobots.searchField
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearchChange: event => dispatch(setSearchField(event.target.value))
+  };
+};
 class App extends Component {
   constructor() {
     super();
@@ -49,4 +61,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
